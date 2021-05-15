@@ -1,0 +1,26 @@
+.logo{
+    display: flex;
+    justify-content: center;
+}
+
+.game-logo{
+    width: 600px;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+}
+
+.game-button{
+    margin-top: 50px;
+    width: 400px;
+}
+
+.canvas{
+    text-align: center;
+}
+
+body{
+    background: orange;
+}
