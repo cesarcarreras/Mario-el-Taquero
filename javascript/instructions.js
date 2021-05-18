@@ -7,11 +7,16 @@ canvas.height = 700;
 let frames  = 0;
 let requestID;
 
+//Audios
+
 const audioGameOver = new Audio();
 audioGameOver.src = "/Audio/game-over.wav"
 
 const audioShoot = new Audio();
 audioShoot.src = "/Audio/shoot.wav"
+
+const audioCollision =  new Audio();
+audioCollision.src = "/Audio/collision.wav"
 
 class Background{
     constructor(){
@@ -27,11 +32,10 @@ class Background{
         let img = new Image() 
         img.src = "/images/game-over.png"; 
         img.onload = function (){
-            ctx.drawImage(img,0,0,canvas.width,canvas.height)
-            console.log("si funciona")
-            audioGameOver.play()
+         ctx.drawImage(img,0,0,canvas.width,canvas.height)
+         console.log("si funciona")
+         audioGameOver.play()
         }
-       
 }
 
     draw(){
@@ -46,7 +50,6 @@ class Background{
             this.height
         )
     }
-
 }
 
 class Instructions{
@@ -93,10 +96,6 @@ class Mario{
         this.image2.src = imgs[1];
 
         this.image = this.image1
-
-        let moveSpeed = 0;
-        let Accel = 2;
-        let maxSpeed = 100;
     }
 
     draw(){
@@ -138,8 +137,8 @@ class Knifes{
     constructor(x, y){
         this.x = x;
         this.y = y;
-        this.width = 60;
-        this.height = 30;
+        this.width = 40;
+        this.height = 20;
         this.image = new Image()
         this.image.src = "/images/knife.png"
     }
@@ -166,10 +165,10 @@ const marioImgs = [
 
 let ensaladas = []
 let knifes = []
-let mario = new Mario(800, 400,150,150,marioImgs);
+let mario = new Mario(100, 400, 100, 100, marioImgs);
 const background = new Background()
 const instructions = new Instructions(100,100,600,100)
-const arrows = new Arrows(100, 330, 300, 150)
+const arrows = new Arrows(700, 330, 300, 150)
 
 function animate(){
     frames ++;
@@ -189,9 +188,9 @@ function generateKnifes(){
 }
 
 function generateSalads(){
-    if(frames % 200 === 0 || frames % 280 === 0 || frames % 340 ===  0){
+    if(frames % 250 === 0 || frames % 340 === 0 || frames % 400 ===  0){
         let randomSalad = Math.floor(Math.random() * 300)
-        let x = Math.floor(Math.random() * canvas.width - 600 )
+        let x = Math.floor(Math.random() * canvas.width - 600)
         const ensalada = new Ensaladas(randomSalad, x)
         ensaladas = [...ensaladas,ensalada]
     }
@@ -207,6 +206,7 @@ function drawSalads(){
             if(knife.collision(ensalada)){
              ensaladas.splice(index_ensaladas,1)
              knifes.splice(index_knife,1)
+             audioCollision.play()
             }
 
             if(knife.x + knife.width > canvas.width){
@@ -246,7 +246,7 @@ addEventListener("keydown", (event)=>{
         mario.y -= 60;
     }
     //Down
-    if(event.keyCode === 40 && mario.y < canvas.height - mario.height -100){
+    if(event.keyCode === 40 && mario.y < canvas.height - mario.height -110){
         mario.y += 60;
     }
     //Shoot

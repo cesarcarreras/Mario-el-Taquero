@@ -7,7 +7,7 @@ canvas.height = 500;
 let frames  = 0;
 
 const audioStart = new Audio();
-audioStart.src = "/Audio/start.wav"
+audioStart.src = "/audios/start.wav"
 
 
 class Background{
@@ -76,8 +76,9 @@ animate()
 addEventListener("keydown", (event)=>{
     if(event.keyCode === 13){
         setTimeout(() => { 
-            window.location.replace("/instructions.html");  
-        }, 1000);
+            window.location.replace("/game1.html");  
+            audioStart.play()
+        }, 1200);
         audioStart.play()
     }
 })
