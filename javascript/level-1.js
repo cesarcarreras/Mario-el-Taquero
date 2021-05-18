@@ -283,13 +283,13 @@ addEventListener("keydown", (event)=>{
         audioShoot.play();
     }
     //Try again
-    if(event.keyCode === 13){
+    if(event.keyCode === 82){
         location.reload();
     }
     //Next level
     if(event.keyCode === 88){
         setTimeout(() => { 
-            window.location.replace("/game2.html");  
+            window.location.replace("/levels/game2.html");  
         }, 800);
         audioStart.play()
     }

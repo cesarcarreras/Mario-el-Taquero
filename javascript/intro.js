@@ -76,7 +76,7 @@ animate()
 addEventListener("keydown", (event)=>{
     if(event.keyCode === 13){
         setTimeout(() => { 
-            window.location.replace("/game1.html");  
+            window.location.replace("/levels/game1.html");  
             audioStart.play()
         }, 1200);
         audioStart.play()
