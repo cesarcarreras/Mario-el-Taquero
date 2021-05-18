@@ -15,22 +15,22 @@ ctx.font ="italic small-caps bold 50px arial"
 
 //AUDIOS
 const audioStart = new Audio();
-audioStart.src = "/audios/start.wav"
+audioStart.src = "./audios/start.wav"
 
 const audioGameOver = new Audio();
-audioGameOver.src = "/audios/game-over2.wav"
+audioGameOver.src = "./audios/game-over2.wav"
 
 const audioShoot = new Audio();
-audioShoot.src = "/audios/shoot.wav"
+audioShoot.src = "./audios/shoot.wav"
 
 const audioCollision =  new Audio();
-audioCollision.src = "/audios/collision.wav"
+audioCollision.src = "./audios/collision.wav"
 
 const audioWinner = new Audio();
-audioWinner.src = "/audios/winner.wav"
+audioWinner.src = "./audios/winner.wav"
 
 const audioLooser = new Audio();
-audioLooser.src = "/audios/sad-trombone.wav"
+audioLooser.src = "./audios/sad-trombone.wav"
 
 // BACKGROUND
 class Background{
@@ -40,12 +40,12 @@ class Background{
         this.width = canvas.width;
         this.height = canvas.height;
         this.image = new Image();
-        this.image.src = "/images/otso-background.jpeg"
+        this.image.src = "./images/otso-background.jpeg"
     }
 
     gameOver(){
         let img = new Image() 
-        img.src = "/images/game-over-final.png"; 
+        img.src = "./images/game-over-final.png"; 
         setTimeout(() => { 
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
         }, 700);
@@ -57,7 +57,7 @@ class Background{
 
     levelUp(){
         let image = new Image() 
-        image.src = "/images/winner-1.png"; 
+        image.src = "./images/winner-1.png"; 
         setTimeout(() => { 
          ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
         }, 700);
@@ -114,8 +114,8 @@ class Mario{
 }
 
 const marioImgs = [
-    "/images/mario1.png",
-    "/images/mario2.png"
+    "./images/mario1.png",
+    "./images/mario2.png"
 ];
 const mario = new Mario(100, 470, 120, 120, marioImgs);
 
@@ -127,7 +127,7 @@ class Tacos{
         this.width = 50;
         this.height = 35;
         this.image = new Image()
-        this.image.src = "/images/taco.png"
+        this.image.src = "./images/taco.png"
     }
 
     draw(){
@@ -154,7 +154,7 @@ class Ensaladas{
         this.height = 70;
         //imagen
         this.image = new Image();
-        this.image.src = "/images/angry-salad.png";
+        this.image.src = "./images/angry-salad.png";
     }
 
     draw(){
@@ -172,7 +172,7 @@ class Brocolis{
         this.height = 70;
         //imagen
         this.image = new Image();
-        this.image.src = "/images/angry-brocoli.png";
+        this.image.src = "./images/angry-brocoli.png";
     }
 
     draw(){
@@ -273,7 +273,7 @@ function levelUp(){
 
 function gameStarts(){
     let image = new Image() 
-    image.src = "/images/nivel2.png"; 
+    image.src = "./images/nivel2.png"; 
     image.addEventListener('load', function(){
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
     })
@@ -315,7 +315,7 @@ addEventListener("keydown", (event)=>{
     //Next level
     if(event.keyCode === 88){
         setTimeout(() => { 
-            window.location.replace("/levels/game3.html");  
+            window.location.replace("./levels/game3.html");  
         }, 1000);
         audioStart.play()
     }

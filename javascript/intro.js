@@ -7,7 +7,7 @@ canvas.height = 500;
 let frames  = 0;
 
 const audioStart = new Audio();
-audioStart.src = "/audios/start.wav"
+audioStart.src = "./audios/start.wav"
 
 
 class Background{
@@ -17,7 +17,7 @@ class Background{
         this.width = canvas.width;
         this.height = canvas.height;
         this.image = new Image();
-        this.image.src = "/images/mexico-background.jpeg"
+        this.image.src = "./images/mexico-background.jpeg"
     }
 
     draw(){
@@ -55,8 +55,8 @@ class Mario{
 
 
 const marioImgs = [
-    "/images/mario1.png",
-    "/images/mario2.png"
+    "./images/mario1.png",
+    "./images/mario2.png"
 ]
 let bullets = [];
 const mario = new Mario(130, 100, 300, 300, marioImgs);
@@ -76,7 +76,7 @@ animate()
 addEventListener("keydown", (event)=>{
     if(event.keyCode === 13){
         setTimeout(() => { 
-            window.location.replace("/levels/game1.html");  
+            window.location.replace("./levels/game1.html");  
             audioStart.play()
         }, 1200);
         audioStart.play()

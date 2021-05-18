@@ -22,11 +22,11 @@ const player = {
 
 // Iterar sobre el SpriteSheet
 const playerSprite = new Image();
-playerSprite.src = "/images/hulkspritesheet.png";
+playerSprite.src = "./images/hulkspritesheet.png";
 
 // Iterar sobre el Background
 const background = new Image();
-ºbackground.src = "/images/taco-stand.jpeg";
+ºbackground.src = "./images/taco-stand.jpeg";
 
 //Dibujar el spriteSheet: 
              // imagen, sourceX, sourceY, sourceW, sourceH, destinationX, destinationY, destinationW, destinationH
