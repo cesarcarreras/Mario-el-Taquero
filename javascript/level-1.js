@@ -8,32 +8,32 @@ canvas.height = 700;
 let frames  = 0;
 let requestID = true;
 let points = 10;
-let ensaladas = []
-let tacos = []
+let ensaladas = [];
+let tacos = [];
 let paused;
-ctx.font ="italic small-caps bold 50px arial"
+ctx.font ="italic small-caps bold 50px arial";
 
 //AUDIOS
 const audioStart = new Audio();
-audioStart.src = "/audios/start.wav"
+audioStart.src = "/audios/start.wav";
 
 const audioGameOver = new Audio();
-audioGameOver.src = "/audios/game-over2.wav"
+audioGameOver.src = "/audios/game-over2.wav";
 
 const audioShoot = new Audio();
-audioShoot.src = "/audios/shoot.wav"
+audioShoot.src = "/audios/shoot.wav";
 
 const audioCollision =  new Audio();
-audioCollision.src = "/audios/collision.wav"
+audioCollision.src = "/audios/collision.wav";
 
 const audioWinner = new Audio();
-audioWinner.src = "/audios/winner.wav"
+audioWinner.src = "/audios/winner.wav";
 
 const audioLooser = new Audio();
-audioLooser.src = "/audios/sad-trombone.wav"
+audioLooser.src = "/audios/sad-trombone.wav";
 
 const audioLevel = new Audio();
-audioLevel.src = "/audios/level-waiting.ogg"
+audioLevel.src = "/audios/level-waiting.ogg";
 
 
 // BACKGROUND
@@ -44,14 +44,14 @@ class Background{
         this.width = canvas.width;
         this.height = canvas.height;
         this.image = new Image();
-        this.image.src = "/images/otso-background.jpeg"
+        this.image.src = "/images/otso-background.jpeg";
     }
 
     gameOver(){
         let img = new Image() 
         img.src = "/images/game-over-final.png"; 
         setTimeout(() => { 
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         }, 700);
         setTimeout(() => { 
             audioLooser.play()
