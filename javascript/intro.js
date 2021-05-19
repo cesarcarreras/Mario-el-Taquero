@@ -1,13 +1,17 @@
 const canvas = document.getElementById("intro");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 500;
-canvas.height = 500;
+canvas.width = 1100;
+canvas.height = 700;
 
 let frames  = 0;
 
 const audioStart = new Audio();
 audioStart.src = "/audios/start.wav"
+
+const audiointro = new Audio();
+audiointro.src = "/audios/intro.mp3"
+audiointro.loop = true
 
 
 class Background{
@@ -17,11 +21,15 @@ class Background{
         this.width = canvas.width;
         this.height = canvas.height;
         this.image = new Image();
-        this.image.src = "/images/mexico-background.jpeg"
+        this.image.src = "/images/mexico-background2.jpg"
+
+        this.logoImage = new Image();
+        this.logoImage.src = "/images/logo.png"
     }
 
     draw(){
         ctx.drawImage(this.image,this.x,this.y,this.width,this.height)
+        ctx.drawImage(this.logoImage, 350, 50, 450, 300)
     }
 
 }
@@ -45,21 +53,17 @@ class Mario{
     draw(){
         if(frames % 25 === 0){
            this.image = this.image === this.image1 ? this.image2 : this.image1
-        }
-         
+        }  
         ctx.drawImage(this.image,this.x,this.y,this.width,this.height)
-        
     }
-
 }
-
 
 const marioImgs = [
     "/images/mario1.png",
     "/images/mario2.png"
 ]
-let bullets = [];
-const mario = new Mario(130, 100, 300, 300, marioImgs);
+
+const mario = new Mario(500, 400, 250, 250, marioImgs);
 const background = new Background()
 
 function animate(){
@@ -67,7 +71,7 @@ function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height)
     background.draw()
     mario.draw()
-
+    audiointro.play()
     requestAnimationFrame(animate)
 }
 
@@ -76,7 +80,7 @@ animate()
 addEventListener("keydown", (event)=>{
     if(event.keyCode === 13){
         setTimeout(() => { 
-            window.location.replace("/levels/game1.html");  
+            window.location.replace("/levels/game-1.html");  
             audioStart.play()
         }, 1200);
         audioStart.play()

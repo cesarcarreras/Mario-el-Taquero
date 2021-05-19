@@ -7,7 +7,7 @@ canvas.height = 700;
 // VALUES
 let frames  = 0;
 let requestID = true;
-let points = 15;
+let points = 25;
 let enemies = []
 let tacos = []
 let paused;
@@ -68,7 +68,7 @@ class Background{
     }
 
     draw(){
-        this.x -= 1.2;
+        this.x -= 1.7;
         if(this.x < -canvas.width) this.x = 0;
         ctx.drawImage(this.image,this.x,this.y,this.width,this.height)
         ctx.drawImage(
@@ -161,7 +161,7 @@ class Ensaladas{
     }
 
     draw(){
-        if(frames % 10) this.x -= 3;
+        if(frames % 10) this.x -= 4.5;
         ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
     }
 
@@ -179,7 +179,7 @@ class Brocolis{
     }
 
     draw(){
-        if(frames % 10) this.x -= 3;
+        if(frames % 10) this.x -= 4.5;
         ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
     }
 
@@ -195,7 +195,7 @@ function animate(){
     drawEnemies();
     mario.draw();
     ctx.fillText(`Enemigos: ${points}`, 800, 60);
-    ctx.fillText(`Nivel: 2`, 800, 120);
+    ctx.fillText(`Nivel: 4`, 800, 120);
     levelUp();
     if(requestID){
         requestAnimationFrame(animate);
@@ -210,7 +210,7 @@ function generateTacos(){
 }
 
 function generateSalads(){
-    if(frames % 180 === 0 || frames % 600 === 0){
+    if(frames % 220 === 0 || frames % 550 === 0){
         let randomSalad = Math.floor(Math.random() * 300);
         let s = Math.floor(Math.random() * canvas.width - 600);
         const ensalada = new Ensaladas(randomSalad, s);
@@ -219,7 +219,7 @@ function generateSalads(){
 }
 
 function generateBrocolis(){
-    if(frames % 400 === 0){
+    if(frames % 400 === 0 || frames % 190 === 0){
         let randomBrocoli = Math.floor(Math.random() * 300);
         let b = Math.floor(Math.random() * canvas.width - 600);
         const brocoli = new Brocolis(randomBrocoli, b);
@@ -247,11 +247,11 @@ function drawEnemies(){
         })
 
      if(mario.collision(ensalada)){
-       gameOver();
+         gameOver();
     }
 
     if(ensalada.x + ensalada.width <= 0 ){
-       gameOver();
+        gameOver();
        enemies.splice(index_enemies,1);
       }
     })
@@ -277,7 +277,7 @@ function levelUp(){
 
 function gameStarts(){
     let image = new Image() 
-    image.src = "/images/nivel2.png"; 
+    image.src = "/images/nivel3.png"; 
     image.addEventListener('load', function(){
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
         audioLevel.play()
@@ -320,7 +320,7 @@ addEventListener("keydown", (event)=>{
     //Next level
     if(event.keyCode === 13){
         setTimeout(() => { 
-            window.location.replace("/levels/game-3.html");  
+            window.location.replace("/levels/game-5.html");  
         }, 1000);
         audioStart.play()
     }

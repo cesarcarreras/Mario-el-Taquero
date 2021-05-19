@@ -7,7 +7,7 @@ canvas.height = 700;
 // VALUES
 let frames  = 0;
 let requestID = true;
-let points = 0;
+let points = 10;
 let ensaladas = []
 let tacos = []
 let paused;
@@ -34,6 +34,7 @@ audioLooser.src = "/audios/sad-trombone.wav"
 
 const audioLevel = new Audio();
 audioLevel.src = "/audios/level-waiting.ogg"
+
 
 // BACKGROUND
 class Background{
@@ -161,7 +162,7 @@ class Ensaladas{
     }
 
     draw(){
-        if(frames % 10) this.x -= 5;
+        if(frames % 10) this.x -= 2; // Velocidad
         ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
     }
 
@@ -175,7 +176,8 @@ function animate(){
     generateSalads();
     drawSalads();
     mario.draw();
-    ctx.fillText(`Enemigos: ${points}`, 650, 60);
+    ctx.fillText(`Enemigos: ${points}`, 800, 60);
+    ctx.fillText(`Nivel: 2`, 800, 120);
     levelUp();
     if(requestID){
         requestAnimationFrame(animate);
@@ -190,7 +192,7 @@ function generateTacos(){
 }
 
 function generateSalads(){
-    if(frames % 250 === 0 || frames % 340 === 0 || frames % 400 ===  0){
+    if(frames % 180 === 0 || frames % 400 === 0){
         let randomSalad = Math.floor(Math.random() * 300);
         let x = Math.floor(Math.random() * canvas.width - 600);
         const ensalada = new Ensaladas(randomSalad, x);
@@ -208,7 +210,7 @@ function drawSalads(){
             if(taco.collision(ensalada)){
              ensaladas.splice(index_ensaladas,1);
              tacos.splice(index_taco,1);
-             points += 1;
+             points -= 1;
              audioCollision.play();
             }
 
@@ -222,7 +224,7 @@ function drawSalads(){
     }
 
     if(ensalada.x + ensalada.width <= 0 ){
-       gameOver();
+      gameOver();
         ensaladas.splice(index_ensaladas,1);
       }
     })
@@ -239,7 +241,7 @@ function resetGame(){
 }
 
 function levelUp(){
-    if(points >= 1){
+    if(points <= 0){
         background.levelUp();
         requestID = false;
     }
@@ -289,8 +291,8 @@ addEventListener("keydown", (event)=>{
     //Next level
     if(event.keyCode === 13){
         setTimeout(() => { 
-            window.location.replace("/levels/game2.html");  
-        }, 800);
+            window.location.replace("/levels/game-2.html");  
+        }, 1000);
         audioStart.play()
     }
 })
