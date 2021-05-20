@@ -80,7 +80,7 @@ animate();
 addEventListener("keydown", (event)=>{
     if(event.keyCode === 13){
         setTimeout(() => { 
-            window.location.replace("./levels/game-1.html");  
+            window.location.replace("./instrucciones.html");  
             audioStart.play();
         }, 1200);
         audioStart.play();

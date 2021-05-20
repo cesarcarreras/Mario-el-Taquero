@@ -15,10 +15,10 @@ ctx.font ="italic small-caps bold 50px arial";
 
 //AUDIOS
 const audioStart = new Audio();
-audioStart.src = "../audios/start.wav";
+audioStart.src = "./audios/start.wav";
 
 const audioGameOver = new Audio();
-audioGameOver.src = "../audios/game-over2.wav";
+audioGameOver.src = "./audios/game-over2.wav";
 
 const audioShoot = new Audio();
 audioShoot.src = "../audios/shoot.wav";
@@ -275,7 +275,7 @@ addEventListener("keydown", (event)=>{
     //Start game
     if(event.keyCode === 13){
         setTimeout(() => { 
-           window.location.replace("../levels/game-1.html");  
+           window.location.replace("./levels/game-1.html");  
        }, 1000);
        audioStart.play();
        };

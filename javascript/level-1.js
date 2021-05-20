@@ -245,7 +245,7 @@ function levelUp(){
         addEventListener('keydown', (event) => {
             if(event.keyCode === 13){
              setTimeout(() => { 
-                window.location.replace("./levels/game-2.html");  
+                window.location.replace("../levels/game-2.html");  
             }, 1000);
             audioStart.play();
             };
