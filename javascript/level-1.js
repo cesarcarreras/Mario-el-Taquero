@@ -10,8 +10,8 @@ let requestID = true;
 let points = 10;
 let ensaladas = [];
 let tacos = [];
-let paused;
-ctx.font ="italic small-caps bold 50px arial";
+ctx.font ="60px VT323";
+ctx.fillStyle = "#2b2828";
 
 //AUDIOS
 const audioStart = new Audio();
@@ -24,7 +24,7 @@ const audioShoot = new Audio();
 audioShoot.src = "../audios/shoot.wav";
 
 const audioCollision =  new Audio();
-audioCollision.src = "../audios/collision.wav";
+audioCollision.src = "../audios/collision.mp3";
 
 const audioWinner = new Audio();
 audioWinner.src = "../audios/winner.wav";
@@ -61,7 +61,7 @@ class Background{
 
     levelUp(){
         let image = new Image() 
-        image.src = "../images/winner-1.png"; 
+        image.src = "../images/esochavo.png"; 
         setTimeout(() => { 
          ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
         }, 700);
@@ -161,7 +161,7 @@ class Ensaladas{
     }
 
     draw(){
-        if(frames % 10) this.x -= 4; // Velocidad
+        if(frames % 10) this.x -= 3;
         ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
     };
 };
@@ -174,8 +174,8 @@ function animate(){
     generateSalads();
     drawSalads();
     mario.draw();
-    ctx.fillText(`Enemigos: ${points}`, 800, 60);
-    ctx.fillText(`Nivel: 1`, 800, 120);
+    ctx.fillText(`Enemigos: ${points}`, 50, 80);
+    ctx.fillText(`Nivel: 1`, 850, 80);
     levelUp();
     if(requestID){
         requestAnimationFrame(animate);

@@ -10,8 +10,8 @@ let requestID = true;
 let points = 30;
 let enemies = [];
 let tacos = [];
-let paused;
-ctx.font ="italic small-caps bold 50px arial";
+ctx.font ="60px VT323";
+ctx.fillStyle = "#2b2828";
 
 //AUDIOS
 const audioStart = new Audio();
@@ -24,7 +24,7 @@ const audioShoot = new Audio();
 audioShoot.src = "../audios/shoot.wav";
 
 const audioCollision =  new Audio();
-audioCollision.src = "../audios/collision.wav";
+audioCollision.src = "../audios/collision.mp3";
 
 const audioWinner = new Audio();
 audioWinner.src = "../audios/winner.wav";
@@ -43,7 +43,7 @@ class Background{
         this.width = canvas.width;
         this.height = canvas.height;
         this.image = new Image();
-        this.image.src = "../images/otso-background.jpeg";
+        this.image.src = "../images/otso-background-2.png";
     };
 
     gameOver(){
@@ -60,7 +60,7 @@ class Background{
 
     levelUp(){
         let image = new Image() 
-        image.src = "../images/winner-1.png"; 
+        image.src = "../images/esochavo.png";
         setTimeout(() => { 
          ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
         }, 700);
@@ -120,7 +120,7 @@ const marioImgs = [
     "../images/mario1.png",
     "../images/mario2.png"
 ];
-const mario = new Mario(100, 470, 120, 120, marioImgs);
+const mario = new Mario(100, 490, 120, 120, marioImgs);
 
 // SHOOTS
 class Tacos{
@@ -152,7 +152,7 @@ class Tacos{
 class Ensaladas{
     constructor(){
         this.x = canvas.width;
-        this.y = 400;
+        this.y = 430;
         this.width = 80;
         this.height = 70;
         //imagen
@@ -170,7 +170,7 @@ class Ensaladas{
 class Brocolis{
     constructor(){
         this.x = canvas.width;
-        this.y = 500;
+        this.y = 530;
         this.width = 80;
         this.height = 70;
         this.image = new Image();
@@ -187,11 +187,11 @@ class Brocolis{
 class Zanahorias{
     constructor(){
         this.x = canvas.width;
-        this.y = 300;
-        this.width = 80;
-        this.height = 70;
+        this.y = 330;
+        this.width = 120;
+        this.height = 100;
         this.image = new Image();
-        this.image.src = "../images/salad3000.png"
+        this.image.src = "../images/angry-carrot.png"
     };
 
     draw(){
@@ -210,8 +210,8 @@ function animate(){
     generateCarrots();
     drawEnemies();
     mario.draw();
-    ctx.fillText(`Enemigos: ${points}`, 800, 60);
-    ctx.fillText(`Nivel: 3`, 800, 120);
+    ctx.fillText(`Enemigos: ${points}`, 50, 80);
+    ctx.fillText(`Nivel: 3`, 850, 80);
     levelUp();
     if(requestID){
         requestAnimationFrame(animate);
@@ -300,7 +300,7 @@ function levelUp(){
         addEventListener('keydown', (event) => {
             if(event.keyCode === 13){
              setTimeout(() => { 
-                window.location.replace("../levels/index.html");  
+                window.location.replace("../index.html");  
             }, 1000);
             audioStart.play();
             };
@@ -335,7 +335,7 @@ addEventListener("keydown", (event)=>{
         mario.x += 100;
     };
     //Up
-    if(event.keyCode === 38 && mario.y > canvas.height - mario.height -300){
+    if(event.keyCode === 38 && mario.y > canvas.height - mario.height -200){
         mario.y -= 100;
     };
     //Down

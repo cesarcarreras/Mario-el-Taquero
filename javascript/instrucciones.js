@@ -21,19 +21,19 @@ const audioGameOver = new Audio();
 audioGameOver.src = "./audios/game-over2.wav";
 
 const audioShoot = new Audio();
-audioShoot.src = "../audios/shoot.wav";
+audioShoot.src = "./audios/shoot.wav";
 
 const audioCollision =  new Audio();
-audioCollision.src = "../audios/collision.wav";
+audioCollision.src = "./audios/collision.wav";
 
 const audioWinner = new Audio();
-audioWinner.src = "../audios/winner.wav";
+audioWinner.src = "./audios/winner.wav";
 
 const audioLooser = new Audio();
-audioLooser.src = "../audios/sad-trombone.wav";
+audioLooser.src = "./audios/sad-trombone.wav";
 
 const audioLevel = new Audio();
-audioLevel.src = "../audios/level-waiting.ogg";
+audioLevel.src = "./audios/level-waiting.ogg";
 
 // PLAYER
 class Mario{
@@ -70,8 +70,8 @@ class Mario{
 };
 
 const marioImgs = [
-    "../images/mario1.png",
-    "../images/mario2.png"
+    "./images/mario1.png",
+    "./images/mario2.png"
 ];
 const mario = new Mario(100, 470, 120, 120, marioImgs);
 
@@ -83,7 +83,7 @@ class Tacos{
         this.width = 50;
         this.height = 35;
         this.image = new Image();
-        this.image.src = "../images/taco.png";
+        this.image.src = "./images/taco.png";
     }
 
     draw(){
@@ -110,7 +110,7 @@ class Ensaladas{
         this.height = 70;
         //imagen
         this.image = new Image();
-        this.image.src = "../images/angry-salad.png";
+        this.image.src = "./images/angry-salad.png";
     };
 
     draw(){
@@ -127,7 +127,7 @@ class Brocolis{
         this.width = 80;
         this.height = 70;
         this.image = new Image();
-        this.image.src = "../images/angry-brocoli.png";
+        this.image.src = "./images/angry-brocoli.png";
     }
 
     draw(){
@@ -144,7 +144,7 @@ class Zanahorias{
         this.width = 80;
         this.height = 70;
         this.image = new Image();
-        this.image.src = "../images/salad3000.png"
+        this.image.src = "./images/salad3000.png"
     };
 
     draw(){
@@ -232,7 +232,7 @@ function drawEnemies(){
 
 function gameStarts(){
     let image = new Image();
-    image.src = "../images/nivel3.png"; 
+    image.src = "./images/instrucciones.png"; 
     image.addEventListener('load', function(){
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
         audioLevel.play();

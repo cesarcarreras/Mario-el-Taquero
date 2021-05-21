@@ -21,15 +21,11 @@ class Background{
         this.width = canvas.width;
         this.height = canvas.height;
         this.image = new Image();
-        this.image.src = "./images/mexico-background2.jpg";
-
-        this.logoImage = new Image();
-        this.logoImage.src = "./images/logo.png";
+        this.image.src = "./images/intro.png";
     }
 
     draw(){
         ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
-        ctx.drawImage(this.logoImage, 350, 50, 450, 300);
     }
 
 }
@@ -63,7 +59,7 @@ const marioImgs = [
     "./images/mario2.png"
 ];
 
-const mario = new Mario(500, 400, 250, 250, marioImgs);
+const mario = new Mario(470, 480, 200, 200, marioImgs);
 const background = new Background();
 
 function animate(){
