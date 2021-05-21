@@ -18,7 +18,7 @@ const audioStart = new Audio();
 audioStart.src = "../audios/start.wav";
 
 const audioGameOver = new Audio();
-audioGameOver.src = "../audios/game-over2.wav";
+audioGameOver.src = "../audios/mario-dies.wav";
 
 const audioShoot = new Audio();
 audioShoot.src = "../audios/shoot.wav";
@@ -28,9 +28,6 @@ audioCollision.src = "../audios/collision.mp3";
 
 const audioWinner = new Audio();
 audioWinner.src = "../audios/winner.wav";
-
-const audioLooser = new Audio();
-audioLooser.src = "../audios/sad-trombone.wav";
 
 const audioLevel = new Audio();
 audioLevel.src = "../audios/level-waiting.ogg";
@@ -48,13 +45,10 @@ class Background{
 
     gameOver(){
         let img = new Image() 
-        img.src = "../images/game-over-final.png"; 
+        img.src = "../images/game-over.png";
         setTimeout(() => { 
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
         }, 700);
-        setTimeout(() => { 
-            audioLooser.play();
-        }, 2300);
         audioGameOver.play();
     };
 
@@ -68,7 +62,7 @@ class Background{
     };
 
     draw(){
-        this.x -= 1.5;
+        this.x -= 2.5;
         if(this.x < -canvas.width) this.x = 0;
         ctx.drawImage(this.image,this.x,this.y,this.width,this.height);
         ctx.drawImage(
@@ -300,7 +294,7 @@ function levelUp(){
         addEventListener('keydown', (event) => {
             if(event.keyCode === 13){
              setTimeout(() => { 
-                window.location.replace("../index.html");  
+                window.location.replace("../levels/game-final.html");  
             }, 1000);
             audioStart.play();
             };
@@ -350,5 +344,18 @@ addEventListener("keydown", (event)=>{
     //Try again
     if(event.keyCode === 82){
         location.reload();
+    };
+
+        // CHEAT CODES
+
+    //Win
+    if(event.keyCode === 87){
+        levelUp();
+        points = 0;
+    };
+
+    //loose
+    if(event.keyCode === 76){
+        gameOver();
     };
 });
